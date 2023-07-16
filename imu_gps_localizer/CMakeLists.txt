@@ -25,3 +25,10 @@ target_link_libraries(imu_gps_localizer_lib
 	${EIGEN3_LIBS}
   libGeographiccc
 )
+# Node for GPS path
+find_package(catkin  REQUIRED COMPONENTS
+  roscpp
+)
+include_directories(include ${catkin_INCLUDE_DIRS} )
+add_executable(gps_to_rviz src/gps_to_rviz.cpp)
+target_link_libraries(gps_to_rviz  ${catkin_LIBRARIES} )

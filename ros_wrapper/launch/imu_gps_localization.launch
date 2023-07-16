@@ -10,7 +10,9 @@
 
     <param name="log_folder"      type="string" value="$(find imu_gps_localization)" />
 
-    <node name="nmea_topic_driver" pkg="nmea_navsat_driver" type="nmea_topic_driver" output="screen" />
+    <!-- <node name="nmea_topic_driver" pkg="nmea_navsat_driver" type="nmea_topic_driver" output="screen" /> -->
+    <node name="gps_to_rviz" pkg="imu_gps_localization" type="gps_to_rviz" output="screen" />
+
     <node name="imu_gps_localization_node" pkg="imu_gps_localization" type="imu_gps_localization_node" output="screen" />
 
     <node pkg="rviz" type="rviz" name="rviz" output="screen" 
