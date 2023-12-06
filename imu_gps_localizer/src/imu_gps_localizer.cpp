@@ -4,6 +4,7 @@
 
 #include "imu_gps_localizer/utils.h"
 
+//hayden ProcessImuData()函数初始化imu数据，对imu数据进行预测，从ENU坐标系转换到GPS坐标系，发布融合后的状态；ProcessGpsPositionData()函数主要实现初始化数据以及位置的更新。
 namespace ImuGpsLocalization {
 
 ImuGpsLocalizer::ImuGpsLocalizer(const double acc_noise, const double gyro_noise,

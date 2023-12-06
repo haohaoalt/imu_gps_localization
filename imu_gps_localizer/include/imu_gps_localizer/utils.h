@@ -3,6 +3,7 @@
 #include <Eigen/Core>
 #include <LocalCartesian.hpp>
 
+//hayden： 主要包括弧度和角度之间的相互转换、ENU坐标系与LLA坐标系的转换以及得到反对称矩阵
 namespace ImuGpsLocalization {
 
 constexpr double kDegreeToRadian = M_PI / 180.;

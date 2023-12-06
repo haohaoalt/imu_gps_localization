@@ -6,6 +6,7 @@
 
 #include "imu_gps_localizer/base_type.h"
 
+//hayden 构造函数中主要是加载参数，保存数据到文件夹下，订阅imu和gps的话题然后发布融合后的轨迹；析构函数主要是释放空间；imu回调函数主要是读取imu数据，然后对数据进行处理，转变状态发布成ros话题，打印状态；gps回调函数主要是实现读取数据，然后进行处理，最后打印。
 LocalizationWrapper::LocalizationWrapper(ros::NodeHandle& nh) {
     // Load configs.
     double acc_noise, gyro_noise, acc_bias_noise, gyro_bias_noise;

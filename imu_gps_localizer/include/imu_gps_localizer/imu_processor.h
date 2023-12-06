@@ -3,7 +3,7 @@
 #include "imu_gps_localizer/base_type.h"
 
 namespace ImuGpsLocalization {
-
+//hayden： ImuProcessor类主要是滤波融合的预测部分Predict()函数声明
 class ImuProcessor{
 public:
     ImuProcessor(const double acc_noise, const double gyro_noise,

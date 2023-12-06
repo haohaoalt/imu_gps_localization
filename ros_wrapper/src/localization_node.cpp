@@ -7,6 +7,7 @@
 
 #include "localization_wrapper.h"
 
+//hayden： 主函数文件，实现初始化ros，初始化LocalizationWrapper类
 int main (int argc, char** argv) {
     // Set glog.
     FLAGS_colorlogtostderr = true;

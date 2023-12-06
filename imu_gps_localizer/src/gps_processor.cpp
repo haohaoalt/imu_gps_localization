@@ -4,8 +4,20 @@
 
 namespace ImuGpsLocalization {
 
+    void AddDeltaToState(const Eigen::Matrix<double, 15, 1>& delta_x, State* state) {
+    state->G_p_I     += delta_x.block<3, 1>(0, 0);
+    state->G_v_I     += delta_x.block<3, 1>(3, 0);
+    state->acc_bias  += delta_x.block<3, 1>(9, 0);
+    state->gyro_bias += delta_x.block<3, 1>(12, 0);
+
+    if (delta_x.block<3, 1>(6, 0).norm() > 1e-12) {
+        state->G_R_I *= Eigen::AngleAxisd(delta_x.block<3, 1>(6, 0).norm(), delta_x.block<3, 1>(6, 0).normalized()).toRotationMatrix();
+    }
+}
+
 GpsProcessor::GpsProcessor(const Eigen::Vector3d& I_p_Gps) : I_p_Gps_(I_p_Gps) { }
 
+//hayden： 通过GPS位置测量数据更新系统的状态
 bool GpsProcessor::UpdateStateByGpsPosition(const Eigen::Vector3d& init_lla, const GpsPositionDataPtr gps_data_ptr, State* state) {
     Eigen::Matrix<double, 3, 15> H;
     Eigen::Vector3d residual;
@@ -46,15 +58,6 @@ void GpsProcessor::ComputeJacobianAndResidual(const Eigen::Vector3d& init_lla,
     jacobian->block<3, 3>(0, 6)  = - G_R_I * GetSkewMatrix(I_p_Gps_);
 }
 
-void AddDeltaToState(const Eigen::Matrix<double, 15, 1>& delta_x, State* state) {
-    state->G_p_I     += delta_x.block<3, 1>(0, 0);
-    state->G_v_I     += delta_x.block<3, 1>(3, 0);
-    state->acc_bias  += delta_x.block<3, 1>(9, 0);
-    state->gyro_bias += delta_x.block<3, 1>(12, 0);
 
-    if (delta_x.block<3, 1>(6, 0).norm() > 1e-12) {
-        state->G_R_I *= Eigen::AngleAxisd(delta_x.block<3, 1>(6, 0).norm(), delta_x.block<3, 1>(6, 0).normalized()).toRotationMatrix();
-    }
-}
 
 }  // namespace ImuGpsLocalization

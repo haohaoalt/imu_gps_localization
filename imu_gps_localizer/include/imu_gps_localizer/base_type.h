@@ -4,7 +4,7 @@
 #include <Eigen/Core>
 
 namespace ImuGpsLocalization {
-
+//hayden 主要是imu数据、GPS数据以及系统状态的数据结构
 struct ImuData {
     double timestamp;      // In second.
 

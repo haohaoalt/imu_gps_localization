@@ -7,6 +7,7 @@
 #include "imu_gps_localizer/imu_processor.h"
 #include "imu_gps_localizer/initializer.h"
 
+//hayden ImuGpsLocalizer类构造函数，声明ProcessImuData()函数，声明ProcessGpsPositionData()函数
 namespace ImuGpsLocalization {
 
 class ImuGpsLocalizer {

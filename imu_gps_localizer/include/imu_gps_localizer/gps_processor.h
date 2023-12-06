@@ -5,7 +5,7 @@
 #include "imu_gps_localizer/base_type.h"
 
 namespace ImuGpsLocalization {
-
+//hayden： GpsProcessor类通过GPS位置更新系统的状态UpdateStateByGpsPosition()以及计算残差以及雅可比矩阵和把得到的误差更新状态
 class GpsProcessor {
 public:
     GpsProcessor(const Eigen::Vector3d& I_p_Gps);

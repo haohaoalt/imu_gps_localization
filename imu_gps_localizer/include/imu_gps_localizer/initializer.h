@@ -9,6 +9,7 @@ namespace ImuGpsLocalization {
 constexpr int kImuDataBufferLength = 100;
 constexpr int kAccStdLimit         = 3.;
 
+//hayden 初始化类，主要是构造函数，添加imu数据，添加gps数据，计算imu数据到gps数据的旋转矩阵这里参考的是openvins	
 class Initializer {
 public:
     Initializer(const Eigen::Vector3d& init_I_p_Gps);

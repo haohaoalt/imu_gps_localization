@@ -6,7 +6,7 @@
 #include "imu_gps_localizer/utils.h"
 
 namespace ImuGpsLocalization {
-
+//hayden： 滤波融合的预测部分Predict()函数具体实现
 ImuProcessor::ImuProcessor(const double acc_noise, const double gyro_noise,
                            const double acc_bias_noise, const double gyro_bias_noise,
                            const Eigen::Vector3d& gravity)

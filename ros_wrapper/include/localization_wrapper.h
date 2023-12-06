@@ -11,6 +11,7 @@
 
 #include "imu_gps_localizer/imu_gps_localizer.h"
 
+//hayden： LocalizationWrapper类定义，主要声明构造函数、析构函数以及imu回调函数、gps回调函数、打印状态、打印gps数据，把状态格式数据转换成ros话题机制
 class LocalizationWrapper {
 public:
     LocalizationWrapper(ros::NodeHandle& nh);
